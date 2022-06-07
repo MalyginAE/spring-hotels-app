@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="/css/common.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:text="|${hotel.getHotelName()}|"></a>
+<br>
+<div th:each="part : ${hotel.getHotelParts()}">
+    <a th:href="@{/hotelpart/{id}(id=${part.getId()})}" th:text="|*{part.getHotelPartAddress()}|"></a>
+</div>
+<br>
+<p>Посетители отеля:</p>
+<div th:each="visitor : ${visitors}">
+    <p th:text="|Посетитель *{visitor.getName()} *{visitor.getSurname()} проживает в корпусе по адресу ${visitor.getHotelPart().getHotelPartAddress()} в комнате номер ${visitor.getRoom()} |"></p>
+</div>
+</body>
+</html>

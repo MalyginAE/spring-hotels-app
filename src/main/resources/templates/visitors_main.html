@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="/css/common.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="visitor : ${visitors}">
+    <a th:href="@{/visitors/{id}(id=${visitor.getId()})}" th:text="|${visitor.getId()}.  ${visitor.getName()} ${visitor.getSurname()} комната номер ${visitor.getRoom()}|"></a>
+</div>
+<br>
+<p>Удаление пользователя по id</p>
+<form  th:method="DELETE"  th:action="@{/visitors} ">
+    <input type="number" name="id" placeholder="id" required>
+    <br>
+    <input type="submit"  value="Отправить">
+</form>
+<br>
+<p>Обновить данные посетителя по id</p>
+<form  th:method="PATCH"  th:action="@{/visitors} ">
+    <input type="number" name="id" placeholder="id" required>
+    <br>
+    <input type="text" name="name" placeholder="имя">
+    <br>
+    <input type="text" name="surName" placeholder="фамилия">
+    <br>
+    <input type="text" name="room" placeholder="комната">
+    <br>
+    <input type="submit"  value="Отправить">
+</form>
+<br>
+<p>Добавить посетителя</p>
+<form  th:method="Post"  th:action="@{/visitors} ">
+    <input type="number" name="id" placeholder="id корпуса в котором будет жить посетитель" required>
+    <br>
+    <input type="text" name="name" placeholder="имя" required>
+    <br>
+    <input type="text" name="surname" placeholder="фамилия" required>
+    <br>
+    <input type="text" name="room" placeholder="комната" required>
+    <br>
+    <input type="submit"  value="Отправить">
+</form>
+</body>
+</html>

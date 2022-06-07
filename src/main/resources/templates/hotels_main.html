@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="/css/common.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="hotel : ${hotels}">
+    <a th:href="@{/hotels/{id}(id=${hotel.getId()})}" th:text="|${hotel.getId()}  ${hotel.getHotelName()}|"></a>
+</div>
+<br>
+<p>Удаление отеля по id</p>
+<form  th:method="DELETE"  th:action="@{/hotels} ">
+    <input type="number" name="id" placeholder="id" required>
+    <br>
+    <input type="submit"  value="Отправить">
+</form>
+<br>
+<p>Обновить имя отеля по id</p>
+<form  th:method="PATCH"  th:action="@{/hotels} ">
+    <input type="number" name="id" placeholder="id" required>
+    <br>
+    <input type="text" name="name" placeholder="название отеля" required>
+    <br>
+    <input type="submit"  value="Отправить">
+</form>
+<br>
+<p>Добавить отель</p>
+<form  th:method="Post"  th:action="@{/hotels} ">
+    <input type="text" name="hotelName" placeholder="название отеля" required>
+    <br>
+    <input type="submit"  value="Отправить">
+</form>
+
+</body>
+</html>

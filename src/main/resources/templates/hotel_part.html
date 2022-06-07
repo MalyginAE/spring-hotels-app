@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="/css/common.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="|${hotelPart.id}. ${hotelPart.getHotelPartAddress()}|"></p>
+<br>
+<p>Посетители которые живут в данном корпусе</p>
+<div th:each="visitor : ${visitors}">
+    <a th:text="|*{visitor.getName()} *{visitor.getSurname()} проживает в комнате номер *{visitor.getRoom()}|"></a>
+</div>
+
+</body>
+</html>
